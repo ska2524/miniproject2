@@ -13,6 +13,10 @@
 <body>
 
 	<style>
+button{
+padding-right: 10px;
+}	
+	
 .form-control1 {
 	width: auto;
 	height: 50px;
@@ -42,7 +46,7 @@
 				class="form-control" id="exampleInputPassword1" name="writer"
 				value="${view.writer}">
 		</div>
-		<button type="submit" class="btn btn-default">제출</button>
+		<button type="submit" class="btn btn-default" style="float: left;">제출</button>
 	</form>
 
 	<form action="/view" method="get" class="form">
@@ -50,7 +54,7 @@
 		<input type="hidden" id="uinput" name="bno" value="${vo.bno}">
 		<input type="hidden" id="uinput" name="type" value="${cri.type}">
 		<input type="hidden" id="uinput" name="keyword" value="${cri.keyword}">
-		<button type="submit" class="btn">취소</button>
+		<button type="submit" id="btn" class="btn btn-default" style="float: left;">취소</button>
 	</form>
 
 
@@ -63,7 +67,7 @@
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		crossorigin="anonymous"></script>
 	<script>
-		$(".btn").on("click", function(e) {
+		$("#btn").on("click", function(e) {
 
 			$(".form").submit();
 

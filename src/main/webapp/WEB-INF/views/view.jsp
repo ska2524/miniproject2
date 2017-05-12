@@ -11,8 +11,16 @@
 <body>
 
 <style>
+.success{
+width: 100px
+}
+
+
+
 .replyLi{
 list-style: none;
+vertical-align: middle;
+padding-bottom: 10px;
 }
 
 .btnDiv{
@@ -33,25 +41,22 @@ padding: 10px;
 float: right;
 }
 
+.pagination{
+margin: auto;
+}
+
 .rere{
-background-color: aqua;
+border-top-color : green;
+border-bottom-style :dotted;
+color:black;
+border-bottom-color : green;
 font-size: 30px;
 text-align: center;
 
 }
 
 	
-.meta {
-	background-color: green;
-	color: white;
-	text-align: center;
-	font-size: 20px;
-}
 
-.metaa {
-	text-align: center;
-	font-size: 20px;
-}
 
 .metaaa {
 	background-color: green;
@@ -61,10 +66,16 @@ text-align: center;
 	width: 100%;
 }
 
-.metaaaa {
-	float :left;
-	text-align: ;
-	font-size: 20px;
+
+
+.metaaaa li{
+	list-style-type:square;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    font-size: 15px;
+    margin: 0px;
+    
 }
 
 .reply {
@@ -75,30 +86,43 @@ text-align: center;
 
 .rebtn{
 float: right;
+padding: 10px;
 }
 </style>
+
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 style="text-align: center;">View Page</h2>
 		</div>
-		<table class="table" style="margin-top: 50px">
+		<div style="height: 50px">
+		
+		</div>
+		<table   cellspacing="0" class="table" style= width: 1000px;">
 			<tr class="meta">
-				<td>글번호</td>
-				<td>글제목</td>
-				<td>글내용</td>
-				<td>글쓴이</td>
-				<td>등록일</td>
-				<td>수정일</td>
+				<td class="success">글번호</td>
+				<td class="active">${view.bno}</td>
 			</tr>
-			<tr class="metaa">
-				<td>${view.bno}</td>
-				<td>${view.title}</td>
-				<td>${view.content}</td>
-				<td>${view.writer}</td>
-				<td>${view.regdate}</td>
-				<td>${view.updatedate}</td>
+			<tr class="meta">
+				<td class="success">글제목</td>
+				<td class="active">${view.title}</td>
 			</tr>
+			<tr class="meta">
+				<td class="success" >글내용</td>
+				<td class="active">${view.content}</td>
+			</tr>
+			<tr class="meta">
+				<td class="success">글쓴이</td>
+				<td class="active">${view.writer}</td>
+			</tr>
+			<tr class="meta">
+				<td class="success">등록일</td>
+				<td class="active">${view.regdate}</td>
+			</tr>
+			<tr class="meta">
+				<td class="success">수정일</td>
+				<td class="active">${view.updatedate}</td>
+			
 		</table>
 	</div>
 	
@@ -126,12 +150,19 @@ float: right;
 		</form>
 </div>	
 <div style="height: 100px;"></div>
-<div style="height: 50px;" class="rere">Reply</div>
-<div class="rebtn">
+<div>
+<table class="table">
+<tr>
+<td class="info" style="text-align: center; font-size: 20px">Reply</td>
+</tr>
+</table></div>
+<div class="rebtn" style="height: 100px;">
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-warning"
 		data-toggle="modal" data-target="#myModal">Register</button>
 		</div>
+<div style="height: 100px";></div>
+
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -143,18 +174,18 @@ float: right;
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					<h4 class="modal-title" id="myModalLabel">Reply Register</h4>
 				</div>
 				<div class="modal-body">
-					content<input type="text" name=content id="newCountent">
-					writer<input type="text" name=writer id="newWriter">
+					<label>content</label><input type="text" name=content id="newCountent" class="form-control">
+					<label>writer</label><input type="text" name=writer id="newWriter" class="form-control">
 					<form id="rform" action="/view" method="get">
 						<input type="hidden" id="uinput" name="page" value="${cri.page}">
 						<input type="hidden" id="uinput" name="bno" value="${view.bno}">
 						<input type="hidden" id="uinput" name="type" value="${cri.type}">
 						<input type="hidden" id="uinput" name="keyword"
 							value="${cri.keyword}">
-						<button id="rbtn">등록</button>
+						<button id="rbtn" class="btn btn-warning" >등록</button>
 					</form>
 
 				</div>
@@ -166,15 +197,24 @@ float: right;
 	
 	<!-- Button trigger modal -->
 
-
+	<!--댓글 리스트  -->
+	
 	<div>
-		<table class="table">
-			<tr class="metaaaa">
+		
+			<ul class="metaaaa">
+				
 
+			</ul>
+		
+		
 
-			</tr>
-		</table>
-
+	</div>
+	
+	<!--댓글페이징  -->
+	<div>
+	<ul class="pagination">
+	
+	</ul>
 	</div>
 <!-- Modal -->
 
@@ -187,15 +227,18 @@ float: right;
         <h4 class="modal-title" id="myModalLabel">댓글 수정/삭제</h4>
       </div>
       <div class="modal-body">
-       <input type="text" name=content id="newCountent11">
+      
+       <label>수정내용</label><input type="text" name=content id="newCountent11" class="form-control">
       </div>
       <div>
-      <button type="button" id="replyModBtn">수정</button>
-      <button type="button" id="replyDelBtn">삭제</button>
+      <form style="width:-10px;float:right;">
+      <button type="button" id="replyDelBtn" class="btn btn-success">Delete</button>
+      <button type="button" id="replyModBtn" class="btn btn-info">Update</button>
+      </form>
      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="modbtn">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="modbtn"  style="float: left;">Close</button>
        
       </div>
     </div>
@@ -235,9 +278,7 @@ float: right;
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		crossorigin="anonymous"></script>
 	<script>
-		$(document)
-				.ready(
-						function(e) {
+		$(document).ready(function(e) {
 
 							var result1 = '${update}';
 
@@ -276,45 +317,86 @@ float: right;
 								$("#uform").submit();
 
 							})
+							
+							var replyPage = 1;
+							
+							$(".pagination").on("click","li a", function(e){
+								
+								e.preventDefault();
+								
+								replyPage = $(this).attr("href");
+								
+								getList(replyPage);
+								
+								
+							})
+							
 
-							getList()
+							getList(replyPage)
 
-							function getList() {
+							function getList(replyPage) {
 								var bno = $("#uinput1").val();
-								$
-										.getJSON(
-												"/reply/view/" + bno,
+								var page = replyPage;
+								$.getJSON(
+												"/reply/view/" +bno+"/"+page,
 												function(data) {
 
-													console.log(data.length);
+													console.log(data);
 													var str = "";
 
-													$(data).each(
+													$(data.list).each(
 
 													function() {
 													str += 
 													
-													"<li data-rno='"+this.rno+"' class='replyLi'>"
+													"<li data-rno='"+this.rno+"' data-con='"+this.content+"' class='replyLi'>"
 																				
 													
-													+"<h4>번호 "+" : "+ this.rno+","+"writer "+" : "+ this.writer+""+"</h4>"
-																				
-																				
-													+"<h4>글내용 "+" : "+ this.content+"</h4>"
+													+"글쓴이 "+" : "+this.writer+" "+" " 
+																			
+													+"내용 "+" : "+this.content
 																				
 																			
-												  + "<button type='button' class='btn btn-primary float-right' data-toggle='modal' data-target='#myModal1' >"
-								                  +"<h4>MOD</h4>"
+												  + "<button style='float: right' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal1'>"
+								                  +"MOD"
 										          +"</button>"
 										          
 																				  
-												 + "</li>";
+												 + "</li>"+"</br>";
 												
 												}
 
 												);
 													$(".metaaaa").html(str)
+													
+													printPaging(data.pageMaker)
 												});
+							}
+							
+							function printPaging(pageMaker){
+								
+								var str ="";
+								
+								if(pageMaker.prev){
+									
+									str+="<li><a href='"+(pageMaker.start-1)+"'> << </a><li>";
+								}
+								
+								for(var i = pageMaker.start, len = pageMaker.end; i<=len; i++){
+									
+									var strClass = pageMaker.cri.page == i?'class=active':'';
+									str+= "<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>" 
+									
+								}
+								
+								if(pageMaker.next){
+									
+									str+="<li><a href='"+(pageMaker.end+1)+"'> << </a><li>";
+								}
+								
+								$(".pagination").html(str);
+								
+								
 							}
 
 							$("#rbtn").on("click", function() {
@@ -357,9 +439,11 @@ float: right;
 										var reply = $(this).parent();
 										console.log(reply);
 										var rno = reply.attr("data-rno");
-										var content = reply.text();
+										var content = reply.attr("data-con");
+										var writer = $("#newWriter").val();
 										
 										$(".modal-title").html(rno);
+										$("#newCountent11").val(content)
 										
 
 									})
@@ -383,7 +467,7 @@ float: right;
 										if(result =='SUCCESS'){
 											alert("삭제되었습니다.");
 											$("#modbtn").trigger("click");
-											getList();
+											getList(replyPage);
 											
 										}
 									}
@@ -417,9 +501,9 @@ float: right;
 									success : function(result) {
 										console.log("result"+result);
 										if(result =='SUCCESS'){
-											alert("수정되었습니다..");
+											alert("수정 되었습니다..");
 											$("#modbtn").trigger("click");
-											getList();
+											getList(replyPage);
 											$("#newCountent11").val("");
 											
 											

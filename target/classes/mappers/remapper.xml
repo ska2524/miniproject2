@@ -5,7 +5,7 @@
   <mapper namespace="org.zerock.persistence.ReplyDAO">
   <select id="list" resultType="org.zerock.domain.ReplyVO">
   
-  select*from tbl_reply where rno>0 and bno =#{bno} order by rno desc <!-- limit #{cri.skip}, #{cri.pageNum} -->
+  select*from tbl_reply where rno>0 and bno =#{bno} order by rno desc limit #{cri.skip}, #{cri.pageNum}
   </select>
   
   <select id="count" resultType="int">

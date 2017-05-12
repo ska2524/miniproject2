@@ -3,6 +3,10 @@
 <%@include file="include.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
+td{
+border-left-style: inset;
+}
+
 br {
 	content: "";
 	display: block;
@@ -75,17 +79,17 @@ text-align: center;
 }
 </style>
 <body>
-	<div class="panel panel-default">
+	<div class="panel panel-default" >
 		<div class="panel-heading">
 			<h2 style="text-align: center;">List Page</h2>
 		</div>
 		<table class="table" style="margin-top: 50px">
 			<tr class="meta">
-				<td>bno</td>
-				<td>title</td>
-				<td>writer</td>
-				<td>regdate</td>
-				<td>updatedate</td>
+				<td width="10%">bno</td>
+				<td width="40%">title</td>
+				<td width="20%">writer</td>
+				<td width="15%">regdate</td>
+				<td width="15%">updatedate</td>
 			</tr>
 			<c:forEach items="${list}" var="list">
 				<tr class="pro">
@@ -120,30 +124,31 @@ text-align: center;
 
 	<div>
 		<form class="form" method="get" action="/list">
-			<input class="hopage" type="hidden" name="page"
-				value=${pageMaker.current}> <input class="view"
-				type="hidden" name="bno"> <select name="type" class="type">
+			<input class="hopage" type="hidden" name="page"value="${pageMaker.current}"> 
+				<input class="view"type="hidden" name="bno"> 
+				<select name="type" class="type">
 				<option value="n" ${cri.type eq null?'selected':''}>---</option>
 				<option value="t" ${cri.type eq 't'?'selected':''}>title</option>
 				<option value="c" ${cri.type eq 'c'?'selected':''}>content</option>
 				<option value="w" ${cri.type eq 'w'?'selected':''}>writer</option>
-			</select> <input type="text" class="text" name="keyword"
+			</select> 
+			<input type="text" class="text" name="keyword"
 				value="${cri.keyword}">
-			<button id="btnn">Search</button>
+			<button id="btnn" class="btn btn-info">Search</button>
 
 		</form>
 	</div>
 
 	<div>
 		<form action="/list">
-			<button>HOME</button>
+			<button class="btn btn-default" style="position: relative; left: 650px ">HOME</button>
 		</form>
 	</div>
 
 
 	</div>
 	<form action="/register" method="get">
-		<button id="btn">Register</button>
+		<button id="btn" class="btn btn-success" style="position: relative; left: 1450px ">Register</button>
 	</form>
 	</div>
 	</div>

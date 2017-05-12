@@ -50,7 +50,7 @@ public class ReplyController {
 		return entity;
 		
 	}
-	@GetMapping("/view/{bno}")
+/*	@GetMapping("/view/{bno}")
 	@ResponseBody
 	public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
 		
@@ -58,7 +58,7 @@ public class ReplyController {
 		
 		try{
 			entity = new ResponseEntity<List<ReplyVO>>(
-					service.getList(bno/*, cri*/),HttpStatus.OK);
+					service.getList(bno, cri),HttpStatus.OK);
 		}catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<ReplyVO>>(HttpStatus.BAD_REQUEST);
@@ -68,11 +68,11 @@ public class ReplyController {
 		return entity;
 
 	}
-	
+	*/
 	
 	
 
-	/*@GetMapping("/view/{bno}/{page}")
+	@GetMapping("/view/{bno}/{page}")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> list(@PathVariable("bno") Integer bno,@PathVariable("page")Integer page) {
 		
@@ -108,7 +108,7 @@ public class ReplyController {
 		return entity;
 
 	}
-	*/
+	
 	@PutMapping("/{rno}")
 	@ResponseBody
 	public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {

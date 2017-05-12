@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
 import org.zerock.persistence.ReplyDAO;
 @Service
@@ -14,9 +15,9 @@ public class ReplyServiceImpl implements ReplyService{
 	ReplyDAO dao;
 	
 	@Override
-	public List<ReplyVO> getList(Integer bno/*, Criteria cri*/) throws Exception {
+	public List<ReplyVO> getList(Integer bno, Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.list(bno/*,cri*/);
+		return dao.list(bno,cri);
 	}
 
 	@Override
