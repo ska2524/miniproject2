@@ -21,7 +21,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> list(Criteria cri) {
 		
-		return sess.selectList(namespace+".list", cri);
+		return sess.selectList(namespace+".list", cri);  
 	}
 
 
