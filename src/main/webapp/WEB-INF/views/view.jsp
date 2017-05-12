@@ -15,7 +15,30 @@
 list-style: none;
 }
 
+.btnDiv{
+float: right;
+padding: 10px;
+position: relative;
+margin: 0 auto;
+}
 
+form{
+padding: 10px;
+}
+.btn btn-warning{
+ align-items: center
+
+}
+.buModal{
+float: right;
+}
+
+.rere{
+background-color: aqua;
+font-size: 30px;
+text-align: center;
+
+}
 
 	
 .meta {
@@ -40,7 +63,7 @@ list-style: none;
 
 .metaaaa {
 	float :left;
-	text-align: center;
+	text-align: ;
 	font-size: 20px;
 }
 
@@ -48,6 +71,10 @@ list-style: none;
 	background-color: white;
 	height: 200px;
 	width: 100%;
+}
+
+.rebtn{
+float: right;
 }
 </style>
 
@@ -74,32 +101,37 @@ list-style: none;
 			</tr>
 		</table>
 	</div>
-	<div>
-		<form id="dform" method="post" action="/view">
+	
+	<div class="btnDiv">
+		<form id="dform" method="post" action="/view" style="width:-10px;float:left;">
 			<input type="hidden" name='delete'> <input type="hidden"
 				id="uinput" name="page" value="${pageMaker.current}"> <input
 				type="hidden" id="uinput1" name="bno" value="${view.bno}"> <input
 				type="hidden" id="uinput" name="type" value="${cri.type}"> <input
 				type="hidden" id="uinput" name="keyword" value="${cri.keyword}">
 			<input type="hidden" id="uinput" name="writer" value="${view.writer}">
-			<button button type='button' class='btn btn-primary btn-lg' id="dbtn">Delete</button>
+			<button type='button' class='btn btn-success' id="dbtn">Delete</button>
 
 		</form>
-	</div>
-	<div>
-		<form id="uform" action="/update" method="get">
+	
+	
+		<form id="uform" action="/update" method="get" style="width:-10px;float:left;">
 			<input type="hidden" id="uinput" name="page"
 				value="${pageMaker.current}"> <input type="hidden"
 				id="uinput" name="bno" value="${view.bno}"> <input
 				type="hidden" id="uinput" name="type" value="${cri.type}"> <input
 				type="hidden" id="uinput" name="keyword" value="${cri.keyword}">
-			<button button type='button' class='btn btn-primary btn-lg' id="ubtn">update</button>
+			<button type='button' class='btn btn-info' id="ubtn">Update</button>
 
 		</form>
-	</div>
+</div>	
+<div style="height: 100px;"></div>
+<div style="height: 50px;" class="rere">Reply</div>
+<div class="rebtn">
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg"
-		data-toggle="modal" data-target="#myModal">댓글 등록</button>
+	<button type="button" class="btn btn-warning"
+		data-toggle="modal" data-target="#myModal">Register</button>
+		</div>
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -260,7 +292,9 @@ list-style: none;
 													$(data).each(
 
 													function() {
-													str += "<li data-rno='"+this.rno+"' class='replyLi'>"
+													str += 
+													
+													"<li data-rno='"+this.rno+"' class='replyLi'>"
 																				
 													
 													+"<h4>번호 "+" : "+ this.rno+","+"writer "+" : "+ this.writer+""+"</h4>"
@@ -268,13 +302,14 @@ list-style: none;
 																				
 													+"<h4>글내용 "+" : "+ this.content+"</h4>"
 																				
-																				
-												  + "<button type='button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal1'>"
-								                  +"<h4>댓글수정</h4>"
+																			
+												  + "<button type='button' class='btn btn-primary float-right' data-toggle='modal' data-target='#myModal1' >"
+								                  +"<h4>MOD</h4>"
 										          +"</button>"
+										          
 																				  
 												 + "</li>";
-
+												
 												}
 
 												);
